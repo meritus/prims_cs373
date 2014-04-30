@@ -55,9 +55,9 @@ int main(int argc, char* argv[])
 			int temp2 = 0;
 			for(int j = 0; j<node; j++)
 				{
-					//get value from user
+					//get value from file
 					//test so user will input a positve vaule if negative or does not input a value than asks again till correct
-					cout<<temp2<<endl;					
+										
 					string tempstr;
 					int x = temp2;
 					while( x < inputFile.length())
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 					//-1=infinty
 					if(temp == 0)
 					{
-						graph[i][j] = -1;
+						graph[i][j] = INT_MAX;
 					}
 					else
 					{
@@ -151,7 +151,7 @@ int** createUserGraph()
 				//-1=infinty
 				if(temp == 0)
 				{
-					graph[i][j] = -1;
+					graph[i][j] = INT_MAX;
 				}
 				else
 				{
