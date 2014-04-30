@@ -20,10 +20,13 @@ int main(int argc, char* argv[])
 
 //if users typed a a file name than use it else use ask user for input
 	cout<<"hello world"<<endl;
+	//if user entered a file than use that file
 	if(argv[1])
 	{
+		
 		string inputFile; 	
 		ifstream infile(argv[1]);
+		//check if file is there
 		if(!infile) 
 		{
 			cout << "Could not open input file" << endl;
@@ -38,7 +41,9 @@ int main(int argc, char* argv[])
 		{
 			exit(0);
 		}
+		//convert first line to int because that line determines number of nodes
 		int node = atoi( inputFile.c_str());
+		//creates 2 dimensionanl array with row and cols eqaul to node
 		int** graph = new int*[node];
 	    	for(int i = 0; i < node; i++) 
 		{
@@ -46,18 +51,18 @@ int main(int argc, char* argv[])
 			for(int j = 0; j < node; j++)
 				{ 
 					graph[i][j] = (i+j); 
-				}// sample set value;    
+				}   
 	  	  }
 		int temp = -1;
+		// inserst into nodes and column form mteh file
 		for(int i = 0; i<node; i++)
 			{
+			//set inputfile to next line
 			infile >> inputFile;
 			int temp2 = 0;
 			for(int j = 0; j<node; j++)
 				{
-					//get value from file
-					//test so user will input a positve vaule if negative or does not input a value than asks again till correct
-										
+					//checks current line until - whic means new number thatn everything before that is value sotred				
 					string tempstr;
 					int x = temp2;
 					while( x < inputFile.length())
@@ -73,6 +78,7 @@ int main(int argc, char* argv[])
 						x++;
 						temp2++;
 					}
+					//convert to a int
 					temp = atoi( tempstr.c_str());
 					//if the value is zero set it to 1 that means it is infinty
 					//else set it to the value indicated by user
@@ -89,6 +95,7 @@ int main(int argc, char* argv[])
 					temp = -1;
 				}
 			}
+		//close the file
 		infile.close();
 		printGraph(graph);
 	}
@@ -124,6 +131,7 @@ int** createUserGraph()
 		cout << "Enter (positve non-zero) amount of nodes for the graph: ";
 		cin>>node;
 	}
+	//creates 2 dimensional array node by node
 	int** graph = new int*[node];
     	for(int i = 0; i < node; i++) 
 	{
@@ -131,7 +139,7 @@ int** createUserGraph()
         	for(int j = 0; j < node; j++)
 			{ 
 				graph[i][j] = (i+j); 
-			}// sample set value;    
+			}   
   	  }
 	int temp = -1;
 	cout<< "Enter the Adjency matrix values"<<endl;
@@ -160,5 +168,6 @@ int** createUserGraph()
 			
 			}
 		}	
+	//return the graph
 	return graph;
 }
