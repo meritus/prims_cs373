@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 ___CS373___. All rights reserved.
 //
 
-#include "header.hpp"
+#include <iostream>
+
 using namespace std;
 
 
